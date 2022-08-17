@@ -45,12 +45,12 @@ public class MemberControllerTest {
     @Mock
     private MemberRepository memberRepository;
 
-    @Test
+       @Test
     public void getMembersTest() throws Exception {
         //given
         List<Member> members = Arrays.asList(
-                new Member(1L, "홍길동1", "password1", "male", "코드스테이츠", 005L, 1L),
-                new Member(2L, "홍길동2", "password2", "female", "유어클래스", 004L, 2L)
+                new Member(1L, "홍길동1",'M', "코드스테이츠", 5L, 1L),
+                new Member(2L, "홍길동2",'F', "유어클래스", 4L, 2L)
         );
         when(memberController.getMembers()).thenReturn(members);
 
@@ -64,7 +64,6 @@ public class MemberControllerTest {
                                List.of(
                                        fieldWithPath("[].id").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                        fieldWithPath("[].name").type(JsonFieldType.STRING).description("이름"),
-                                       fieldWithPath("[].password").type(JsonFieldType.STRING).description("비밀번호"),
                                        fieldWithPath("[].sex").type(JsonFieldType.STRING).description("성별"),
                                        fieldWithPath("[].companyName").type(JsonFieldType.STRING).description("회사명"),
                                        fieldWithPath("[].companyType").type(JsonFieldType.NUMBER).description("업종"),
@@ -79,9 +78,9 @@ public class MemberControllerTest {
         //given
         long companyLocation = 1L;
         List<Member> members = Arrays.asList(
-                new Member(1L, "홍길동1", "password1", "male", "코드스테이츠", 5L, 1L),
-                new Member(2L, "홍길동2", "password2", "female", "유어클래스", 4L, 2L),
-                new Member(3L, "홍길동3", "password3", "female", "유어클래스2", 4L, 1L)
+                new Member(1L, "홍길동1",'M', "코드스테이츠", 5L, 1L),
+                new Member(2L, "홍길동2",'F', "유어클래스", 4L, 2L),
+                new Member(3L, "홍길동3",'M', "유어클래스2", 4L, 1L)
         );
 
         when(memberController.getMembersLocation(Mockito.anyLong())).thenReturn(members);
@@ -97,7 +96,6 @@ public class MemberControllerTest {
                                         List.of(
                                                 fieldWithPath("[].id").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                                 fieldWithPath("[].name").type(JsonFieldType.STRING).description("이름"),
-                                                fieldWithPath("[].password").type(JsonFieldType.STRING).description("비밀번호"),
                                                 fieldWithPath("[].sex").type(JsonFieldType.STRING).description("성별"),
                                                 fieldWithPath("[].companyName").type(JsonFieldType.STRING).description("회사명"),
                                                 fieldWithPath("[].companyType").type(JsonFieldType.NUMBER).description("업종"),
@@ -112,9 +110,9 @@ public class MemberControllerTest {
         //given
         long companyType = 5L;
         List<Member> members = Arrays.asList(
-                new Member(1L, "홍길동1", "password1", "male", "코드스테이츠", 5L, 1L),
-                new Member(2L, "홍길동2", "password2", "female", "유어클래스", 4L, 2L),
-                new Member(3L, "홍길동3", "password3", "female", "유어클래스2", 4L, 1L)
+                new Member(1L, "홍길동1", 'M', "코드스테이츠", 5L, 1L),
+                new Member(2L, "홍길동2", 'F', "유어클래스", 4L, 2L),
+                new Member(3L, "홍길동3", 'M', "유어클래스2", 4L, 1L)
         );
 
         when(memberController.getMembersType(Mockito.anyLong())).thenReturn(members);
@@ -129,7 +127,6 @@ public class MemberControllerTest {
                                 List.of(
                                         fieldWithPath("[].id").type(JsonFieldType.NUMBER).description("회원 식별자"),
                                         fieldWithPath("[].name").type(JsonFieldType.STRING).description("이름"),
-                                        fieldWithPath("[].password").type(JsonFieldType.STRING).description("비밀번호"),
                                         fieldWithPath("[].sex").type(JsonFieldType.STRING).description("성별"),
                                         fieldWithPath("[].companyName").type(JsonFieldType.STRING).description("회사명"),
                                         fieldWithPath("[].companyType").type(JsonFieldType.NUMBER).description("업종"),
